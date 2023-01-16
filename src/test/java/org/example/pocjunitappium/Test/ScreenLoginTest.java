@@ -3,8 +3,12 @@ package org.example.pocjunitappium.Test;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.example.pocjunitappium.Page.ScreenLoginPage;
+import org.example.pocjunitappium.Support.GeradorDataHora;
+import org.example.pocjunitappium.Support.Screenshot;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestName;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebElement;
 
@@ -14,7 +18,13 @@ import java.net.URL;
 
 public class ScreenLoginTest {
     private static ScreenLoginPage screenLogin;
+    private Screenshot screenshot;
+
+    private GeradorDataHora geradorDataHora;
     private static AppiumDriver<RemoteWebElement> driver;
+
+    @Rule
+    public TestName test = new TestName();
 
     @BeforeClass
     public static void caps() throws MalformedURLException{
@@ -29,6 +39,9 @@ public class ScreenLoginTest {
     @Test
     public void loginTest(){
         screenLogin.logar();
+
+        String file = "evidências/" + GeradorDataHora.gerarDataHora() + ".png";
+        screenshot.salvarScreenshot(driver, file);
     }
 
 }
