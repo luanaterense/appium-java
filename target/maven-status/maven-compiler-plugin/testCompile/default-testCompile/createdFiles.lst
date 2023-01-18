@@ -1,0 +1,4 @@
+org\example\pocjunitappium\Support\Screenshot.class
+org\example\pocjunitappium\Support\GeradorDataHora.class
+org\example\pocjunitappium\Test\ScreenLoginTest.class
+org\example\pocjunitappium\Page\ScreenLoginPage.class

@@ -9,8 +9,12 @@ import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -38,10 +42,11 @@ public class ScreenLoginTest {
 
     @Test
     public void loginTest(){
+        WebElement myDynamicElement = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText[@content-desc=\"email\"]")));
         screenLogin.logar();
 
         String file = "evidências/" + GeradorDataHora.gerarDataHora() + ".png";
         screenshot.salvarScreenshot(driver, file);
     }
-
 }
